@@ -1,0 +1,72 @@
+DATA_PRESET:
+  CENTER_IDX: 9
+  USE_CACHE: True
+  N_RESAMPLED_OBJ_POINTS: 4096
+  N_INTENTS: 2
+
+DATASET:
+  TRAIN:
+    TYPE: OIShape
+    DATA_SPLIT: train
+    DATA_ROOT: ./data
+    DATA_MODE: intent
+    OBJ_CATES: ["trigger_sprayer"]
+    # OBJ_CATES: ["trigger_sprayer","bottle",'cylinder_bottle','cameras','lotion_pump','gamecontroller','pen','eyeglasses','mug']
+    INTENT_MODE: ["use", "hold"]
+    
+  VAL:
+    TYPE: OIShape
+    DATA_SPLIT: val
+    DATA_ROOT: ./data
+    DATA_MODE: intent
+    OBJ_CATES: ["trigger_sprayer"]
+    INTENT_MODE: ["use", "hold"]
+
+  TEST:
+    TYPE: OIShape
+    DATA_SPLIT: test
+    DATA_ROOT: ./data
+    DATA_MODE: intent
+    # OBJ_CATES: ["trigger_sprayer"]
+    OBJ_CATES: ["trigger_sprayer","bottle",'cylinder_bottle','cameras','lotion_pump','gamecontroller','pen','eyeglasses','mug']
+    # INTENT_MODE: "all"
+    INTENT_MODE: ["use", "hold"]
+
+
+TRANSFORM:
+  TYPE: GrabNetTransformIntent
+  # TYPE: GrabNetTransformObject
+  RAND_ROT: True
+  RAND_DEG_STD: 20
+  USE_ORIGINAL_OBJ_ROT: False
+  BPS_BASIS_PATH: assets/GrabNet/bps.npz
+  BPS_FEAT_TYPE: dists
+
+MODEL:
+  TYPE: GrabNet
+  COARSE_NET:
+    TYPE: CoarseIntentNetIntentEmbedEncode
+    LATENTD: 16
+    KL_COEF: 0.005
+    VPE_PATH: "assets/GrabNet/verts_per_edge.npy"
+    C_WEIGHT_PATH: "assets/GrabNet/rhand_weight.npy"
+    # PRETRAINED: checkpoints/csmr/grab_lsp3_2025_0906_1303_10/checkpoint_970/CoarseIntentNetIntentEmbedEncode.pth.tar   ## csmr-cgvae okk  
+    # PRETRAINED: checkpoints/grabnet_latent32_2026_0413_1707_18/checkpoints/checkpoint_970/CoarseIntentNetIntentEmbedEncode.pth.tar
+    # PRETRAINED: checkpoints/grabnet_latent32_2026_0416_2144_43/checkpoints/checkpoint_970/CoarseIntentNetIntentEmbedEncode.pth.tar
+    # PRETRAINED: checkpoints/gn_wocls_2025_0324_2015_44/checkpoint_1000/CoarseIntentNetIntentEmbedEncode.pth.tar
+    # PRETRAINED: checkpoints/affordpose_1000/checkpoint_1000/CoarseIntentNetIntentEmbedEncode.pth.tar
+    PRETRAINED: /data/zhenhua/oakink_data/checkpoints/ragg/kmeans0512/CoarseIntentNetIntentEmbedEncode.pth.tar   ## ragg
+
+
+  REFINE_NET:
+    TYPE: RefineNet
+    KL_COEF: 0.005
+    VPE_PATH: "assets/GrabNet/verts_per_edge.npy"
+    C_WEIGHT_PATH: "assets/GrabNet/rhand_weight.npy"
+    # PRETRAINED: checkpoints/csmr/ragg14_2025_0902_1227_16/checkpoint_130/RefineNet.pth.tar        ## csmr-mskn okk
+    # PRETRAINED: checkpoints/csmr/ragg14_2025_0902_1227_16/checkpoint_200/RefineNet.pth.tar        ## csmr-mskn okk
+    # PRETRAINED: checkpoints/rnet_ori_2025_0306_1629_01/checkpoint_260/RefineNet.pth.tar
+    PRETRAINED: /data/zhenhua/oakink_data/checkpoints//ragg/prokan_0306_2025_0306_2241_48//checkpoint_180/RefineNet.pth.tar
+    # PRETRAINED: checkpoints/rnet_test0521_2025_0521_1006_44/checkpoints/checkpoint_160/RefineNet.pth.tar   
+    # PRETRAINED: checkpoints/fgr_64d_2025_0719_2354_07/checkpoints/checkpoint_140/RefineNet.pth.tar   #32d 150okk  160okk     64d 180ok 
+    # PRETRAINED: checkpoints/rnet_ori_2025_0306_1629_01/checkpoint_260/RefineNet.pth.tar
