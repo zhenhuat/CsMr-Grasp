@@ -1,0 +1,14 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite the CsMr-Grasp manuscript and the relevant OakInk work."
+type: software
+title: "CsMr-Grasp: Classifier-Steered and Multiscale-Refined Intent-based Grasp Generation"
+authors:
+  - family-names: Tang
+    given-names: Zhenhua
+  - family-names: Hao
+    given-names: Yanbin
+  - family-names: Hong
+    given-names: Richang
+  - family-names: Pun
+    given-names: Chi-Man
+repository-code: "https://github.com/zhenhuat/CsMr-Grasp"

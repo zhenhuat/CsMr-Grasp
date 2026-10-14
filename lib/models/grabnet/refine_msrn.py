@@ -116,7 +116,7 @@ class MultiScaleDenseBlock(nn.Module):
 
 
 
-@MODEL.register_module()
+@MODEL.register_module(name="RefineNetMsRN")
 class RefineNet(ModelABC):
 
     def __init__(self, cfg, in_size=778 + 16 * 6 + 3, h_size=512, n_iters=3, strict=False):

@@ -143,7 +143,7 @@ class MultiScaleResBlock(nn.Module):
         return self.activation(out)
 
 
-@MODEL.register_module()
+@MODEL.register_module(name="CoarseIntentNetCS")
 class CoarseIntentNetIntentEmbedEncode(CoarseNet):
 
     def __init__(self, cfg):
