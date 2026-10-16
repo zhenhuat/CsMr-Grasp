@@ -20,12 +20,9 @@ The repository also contains OakInk-Shape baseline and comparison code inherited
 
 ## Interactive demo and user study
 
-**[Open the English 3D grasp comparison and user study](https://csmr-grasp-user-study.fairtetra256.chatgpt.site/)**
+**[Explore the CsMr-Grasp interactive study](https://csmr-grasp-user-study.fairtetra256.chatgpt.site/)**
 
-Rotate and zoom paired **hold** and **use** grasps for the same object, compare four anonymized generation methods, and choose the grasps that look most appropriate. The site shows your own saved choices and live cumulative results. This new study site is separate from the [original visualization study](https://zhenhuat.github.io/csmr_seen_evaluation/), which remains available.
-
-The comparison uses models from the original study's public assets. Its legacy `viz_mesh/sns/` directory contains the CsMr-Grasp outputs.
-The [English study source](https://github.com/zhenhuat/csmr_seen_evaluation_en) is maintained separately for rollback and further changes.
+The CsMr-Grasp study lets visitors rotate and zoom paired **hold** and **use** grasps for the same object, compare four anonymized generation methods, and choose the grasps that best match each intent. Participants can review their saved choices and see live aggregate results.
 
 ## Repository layout
 
